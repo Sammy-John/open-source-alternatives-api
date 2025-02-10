@@ -12,15 +12,16 @@ The **Open-Source Software Alternatives API** is a REST API that helps users fin
 - ⭐ Software Popularity & Ratings (Sorted by GitHub Stars, Upvotes, Last Updated)
 - ⚖ Compare Apps Feature-by-Feature (Photoshop V Gimp)
 
-## 📦 Tech Stack
+## 🛠 Tech Stack
 
-- **Backend:** Express.js (Node.js)
+- **Backend**: 	Node.js + Express.js
+- **Database**:	PostgreSQL (with Full-Text Search)
+- **Caching**:	Redis (for frequently searched queries)
+- **External API**: Github API (fetching repo stars and updates)
+- **Documentation**: Swagger (OpenAPI spec)
+- **Authentication (Future): JWT-based user Authentication
+- **Hosting (Deployment): Render / DigitalOcean / Vercel
 
-- **Database:** PostgreSQL (with Full-Text Search)
-
-- **Caching:** Redis (for faster lookups)
-
-- **External APIs:** GitHub API (to fetch repo stars & last update)
 
 ## 📜 License
 
