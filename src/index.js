@@ -5,10 +5,8 @@ import dotenv from "dotenv";
 
 import categoryRoutes from "./routes/categories.js";
 import alternativeRoutes from "./routes/alternatives.js";
-import rankingRoutes from "./routes/rankings.js";
 import compareRoutes from "./routes/compare.js";
 
-// Load environment variables
 dotenv.config();
 
 const app = express();
@@ -19,9 +17,7 @@ app.use(helmet());
 // Register API routes
 app.use("/categories", categoryRoutes);
 app.use("/alternatives", alternativeRoutes);
-app.use("/top-alternatives", rankingRoutes);
 app.use("/compare", compareRoutes);
 
-// Start Server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
