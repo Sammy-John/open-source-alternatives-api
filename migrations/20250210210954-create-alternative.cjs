@@ -2,10 +2,9 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Alternatives", {
       id: {
-        type: Sequelize.UUID, // ✅ Ensure Alternatives use UUIDs
+        type: Sequelize.UUID,
         defaultValue: Sequelize.literal("gen_random_uuid()"),
         primaryKey: true,
-        allowNull: false,
       },
       name: {
         type: Sequelize.STRING,
@@ -17,11 +16,11 @@ module.exports = {
       },
       website: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       github: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       platforms: {
         type: Sequelize.ARRAY(Sequelize.STRING),
@@ -33,21 +32,21 @@ module.exports = {
       },
       github_stars: {
         type: Sequelize.INTEGER,
-        allowNull: true,
+        allowNull: false,
       },
       last_updated: {
         type: Sequelize.DATE,
-        allowNull: true,
+        allowNull: false,
       },
       categoryId: {
-        type: Sequelize.UUID, // ✅ Change to UUID to match Categories
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: "Categories",
           key: "id",
         },
-        onDelete: "CASCADE",
         onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -60,7 +59,7 @@ module.exports = {
     });
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) { // ✅ Make sure this is async
     await queryInterface.dropTable("Alternatives");
   }
 };

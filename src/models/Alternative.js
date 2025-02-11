@@ -1,4 +1,4 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize"; // ✅ Import Sequelize
 import sequelize from "../db.js";
 import Category from "./Category.js";
 
@@ -22,11 +22,12 @@ const Alternative = sequelize.define("Alternative", {
     type: DataTypes.STRING,
   },
   platforms: {
-    type: DataTypes.ARRAY(DataTypes.STRING), // ["Windows", "Mac", "Linux"]
+    type: DataTypes.ARRAY(DataTypes.STRING), // ✅ Correct usage
   },
   features: {
-    type: DataTypes.ARRAY(DataTypes.STRING), // ["Self-Hosted", "Cloud Storage"]
-  },
+    type: DataTypes.ARRAY(DataTypes.STRING), // ✅ Fixed `Sequelize.ARRAY`
+    allowNull: false,
+  },  
   github_stars: {
     type: DataTypes.INTEGER,
     defaultValue: 0,
@@ -36,7 +37,7 @@ const Alternative = sequelize.define("Alternative", {
     defaultValue: DataTypes.NOW,
   },
   categoryId: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID, // ✅ Use UUID instead of INTEGER if Categories use UUID
     references: {
       model: Category,
       key: "id",

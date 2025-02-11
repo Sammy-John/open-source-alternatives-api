@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 import categoryRoutes from "./routes/categories.js";
 import alternativeRoutes from "./routes/alternatives.js";
 import compareRoutes from "./routes/compare.js";
+import searchRoutes from "./routes/search.js";
+import topAlternativesRoutes from "./routes/topAlternatives.js";
 
 dotenv.config();
 
@@ -18,6 +20,8 @@ app.use(helmet());
 app.use("/categories", categoryRoutes);
 app.use("/alternatives", alternativeRoutes);
 app.use("/compare", compareRoutes);
+app.use("/search", searchRoutes);
+app.use("/top-alternatives", topAlternativesRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
