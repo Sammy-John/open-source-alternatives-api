@@ -2,9 +2,10 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Categories", {
       id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+        type: Sequelize.UUID, // ✅ Change to UUID
+        defaultValue: Sequelize.literal("gen_random_uuid()"), // ✅ Ensure UUID generation
         primaryKey: true,
+        allowNull: false,
       },
       name: {
         type: Sequelize.STRING,
